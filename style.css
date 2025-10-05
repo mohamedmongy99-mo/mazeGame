@@ -1,0 +1,413 @@
+/* Warm Vintage Theme - Retro Office Style */
+:root {
+    --primary-bg: #f5f1e8;
+    --secondary-bg: #e8dcc6;
+    --accent-pink: #f4a6a6;
+    --accent-mint: #a6d4a6;
+    --accent-coral: #f4b6a6;
+    --accent-yellow: #f4e6a6;
+    --text-dark: #5d4e37;
+    --text-light: #8b7355;
+    --border-color: #d4c4a8;
+    --shadow-color: rgba(93, 78, 55, 0.1);
+    --wall-color: #8b7355;
+    --path-color: #f9f5f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--primary-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    border: 3px solid var(--border-color);
+    overflow: hidden;
+}
+
+.game-header {
+    background: linear-gradient(90deg, var(--accent-coral), var(--accent-yellow));
+    padding: 30px;
+    text-align: center;
+    border-bottom: 3px solid var(--border-color);
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+    color: var(--text-dark);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.game-board {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    align-items: flex-start;
+}
+
+.instructions {
+    flex: 0 0 250px;
+    background: var(--path-color);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.instructions h3 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: var(--accent-mint);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.arrow-key {
+    background: var(--text-dark);
+    color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.maze-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.maze {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    gap: 2px;
+    background: var(--border-color);
+    padding: 15px;
+    border-radius: 12px;
+    border: 3px solid var(--wall-color);
+    box-shadow: 0 6px 24px var(--shadow-color);
+}
+
+.maze-cell {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.maze-cell.wall {
+    background: linear-gradient(135deg, var(--wall-color), #6b5b42);
+    border: 1px solid #4a3f2a;
+}
+
+.maze-cell.path {
+    background: var(--path-color);
+    border: 1px solid var(--border-color);
+}
+
+.maze-cell.rabbit {
+    background: var(--accent-pink);
+    border: 2px solid var(--text-dark);
+    animation: rabbitBounce 1s ease-in-out infinite alternate;
+}
+
+.maze-cell.rabbit::after {
+    content: '🐰';
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.maze-cell.gift {
+    background: var(--accent-yellow);
+    border: 2px solid var(--accent-coral);
+    animation: giftGlow 2s ease-in-out infinite alternate;
+}
+
+.maze-cell.gift::after {
+    content: '🎁';
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes rabbitBounce {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes giftGlow {
+    0% { box-shadow: 0 0 10px var(--accent-yellow); }
+    100% { box-shadow: 0 0 20px var(--accent-coral); }
+}
+
+.game-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: var(--path-color);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.steps-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.label {
+    color: var(--text-light);
+}
+
+#steps {
+    background: var(--accent-mint);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    color: var(--text-dark);
+    min-width: 40px;
+    text-align: center;
+}
+
+.reset-button {
+    background: linear-gradient(135deg, var(--accent-coral), var(--accent-pink));
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.reset-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.reset-button:active {
+    transform: translateY(0);
+}
+
+/* Celebration Modal */
+.celebration-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(93, 78, 55, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+}
+
+.celebration-modal.hidden {
+    display: none;
+}
+
+.celebration-content {
+    background: var(--primary-bg);
+    padding: 40px;
+    border-radius: 20px;
+    border: 4px solid var(--accent-yellow);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+    position: relative;
+    z-index: 1001;
+    animation: celebrationBounce 0.6s ease;
+}
+
+.celebration-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    animation: rainbow 2s ease-in-out infinite;
+}
+
+.celebration-header p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.celebration-stats {
+    background: var(--accent-mint);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.celebration-stats p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.play-again-button {
+    background: linear-gradient(135deg, var(--accent-yellow), var(--accent-coral));
+    color: var(--text-dark);
+    border: 3px solid var(--border-color);
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.play-again-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes celebrationBounce {
+    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes rainbow {
+    0% { color: var(--accent-pink); }
+    25% { color: var(--accent-coral); }
+    50% { color: var(--accent-yellow); }
+    75% { color: var(--accent-mint); }
+    100% { color: var(--accent-pink); }
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-pink);
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti:nth-child(2n) { background: var(--accent-yellow); }
+.confetti:nth-child(3n) { background: var(--accent-mint); }
+.confetti:nth-child(4n) { background: var(--accent-coral); }
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-board {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .instructions {
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .maze {
+        grid-template-columns: repeat(8, 40px);
+        grid-template-rows: repeat(8, 40px);
+    }
+    
+    .maze-cell {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .maze-cell.rabbit::after,
+    .maze-cell.gift::after {
+        font-size: 1.5rem;
+    }
+    
+    .game-header h1 {
+        font-size: 2rem;
+    }
+    
+    .celebration-content {
+        margin: 20px;
+        padding: 30px;
+    }
+}
