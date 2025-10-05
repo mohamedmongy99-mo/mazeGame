@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabbit Maze Adventure - Learn Programming Sequences</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🐰 Rabbit Maze Adventure</h1>
+            <p class="subtitle">Help the rabbit find the gift using arrow keys!</p>
+        </header>
+        
+        <div class="game-board">
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <div class="controls">
+                    <div class="control-item">
+                        <span class="arrow-key">↑</span>
+                        <span>Move Up</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="arrow-key">↓</span>
+                        <span>Move Down</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="arrow-key">←</span>
+                        <span>Move Left</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="arrow-key">→</span>
+                        <span>Move Right</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="maze-container">
+                <div id="maze" class="maze"></div>
+                <div class="game-info">
+                    <div class="steps-counter">
+                        <span class="label">Steps:</span>
+                        <span id="steps">0</span>
+                    </div>
+                    <button id="reset-btn" class="reset-button">🔄 Reset Game</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Celebration Modal -->
+        <div id="celebration-modal" class="celebration-modal hidden">
+            <div class="celebration-content">
+                <div class="celebration-header">
+                    <h2>🎉 Congratulations! 🎉</h2>
+                    <p>You helped the rabbit find the gift!</p>
+                </div>
+                <div class="celebration-stats">
+                    <p>Steps taken: <span id="final-steps">0</span></p>
+                    <p>Great job learning programming sequences!</p>
+                </div>
+                <div class="celebration-actions">
+                    <button id="play-again-btn" class="play-again-button">🐰 Play Again</button>
+                </div>
+            </div>
+            <div class="confetti-container" id="confetti-container"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
